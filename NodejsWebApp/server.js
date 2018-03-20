@@ -1,8 +1,38 @@
 'use strict';
-var http = require('http');
+
+var express = require('express');
+var app = express();
+
+var router = express.Router();
+
 var port = process.env.PORT || 1337;
 
-http.createServer(function (req, res) {
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('Hello World\n');
-}).listen(port);
+
+
+router.get('/home', function (req, res) {
+    res.end("welcome to home");
+});
+
+router.get('/another', function (req, res) {
+    res.end("welcome to another");
+});
+
+
+var router2 = express.Router();
+
+router2.get('/home', function (req, res) {
+    res.end("welcome to home 2");
+});
+
+router2.get('/another', function (req, res) {
+    res.end("welcome to another 2");
+});
+
+
+app.use('/', router);
+
+app.use('/fruits', router2);
+
+app.listen(port, function () {
+    console.log("listening " + port);
+});
