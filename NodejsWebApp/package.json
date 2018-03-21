@@ -6,5 +6,8 @@
   "author": {
     "name": "saravan"
   },
-  "dependencies": {}
+  "scripts": {
+    "install": "node installer.js"
+  }
+
 }
